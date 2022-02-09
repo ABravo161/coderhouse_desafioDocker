@@ -1,0 +1,16 @@
+version: "3"
+services:
+  mongo-coderhouse:
+    image: mongo:latest
+    container_name: mongo-coderhouse
+    ports:
+      - 27020:27017
+  desafio-docker:
+    depends_on:
+      - mongo-coderhouse
+    build: .
+    container_name: desafioDocker
+    ports:
+      - 8080:8080
+    links:
+      - mongo-coderhouse
